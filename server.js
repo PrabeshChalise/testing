@@ -23,15 +23,11 @@ app.get("/api/users", async (req, res) => {
     // Retrieve data from the "user" collection directly
     const users = await db.collection("user").find({}).toArray();
 
-    console.log("Fetched users:", users);
     res.json(users);
   } catch (err) {
-    console.error("Error fetching users:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 app.use("/uploads", express.static("uploads"));
-app.listen(port, () => {
-  console.log("server is running in port", port);
-});
+app.listen(port, () => {});
