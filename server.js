@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2; // Import the Cloudinary v2 library
 const app = express();
 
 const port = process.env.PORT || 80;
@@ -13,8 +13,8 @@ const routerWorker = require("./routes/workerRoutes");
 const User = require("./model/userModel");
 const mongoose = require("mongoose"); // Import mongoose
 dbConnect();
-// const cloudinary = require("cloudinary").v2;
 
+// Configure Cloudinary
 cloudinary.config({
   cloud_name: "dsnmhnj0b",
   api_key: "812327346814326",
