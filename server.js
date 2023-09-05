@@ -13,7 +13,7 @@ const routerWorker = require("./routes/workerRoutes");
 const User = require("./model/userModel");
 const mongoose = require("mongoose"); // Import mongoose
 dbConnect();
-const cloudinary = require("cloudinary").v2;
+// const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
   cloud_name: "dsnmhnj0b",
