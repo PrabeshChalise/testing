@@ -38,7 +38,6 @@ const postProduct = asyncHandler(async (req, res) => {
       throw new Error("Image upload failed");
     }
 
-    const { filename } = req.file; // Get the uploaded image filename
     const { name, category, quantity, pricePerPieceCP } = req.body;
 
     // Calculate totalPriceCP and totalPriceSP
@@ -46,8 +45,11 @@ const postProduct = asyncHandler(async (req, res) => {
     const pricePerPieceSP = parseFloat(pricePerPieceCP) * 1.05;
     const totalPriceSP = pricePerPieceSP * parseFloat(quantity);
 
+    // Upload image to Cloudinary
+    const image = await cloudinary.uploader.upload(req.file.path);
+
     const product = await Product.create({
-      image: filename, // Store the image filename in the database
+      image: image.secure_url, // Store the Cloudinary image URL in the database
       name,
       category,
       quantity,
