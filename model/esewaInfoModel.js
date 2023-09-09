@@ -16,9 +16,7 @@ const esewaSchema = mongoose.Schema({
     type: Number,
     required: [true, "please enter your contact"],
   },
-  detailedLocation: {
-    type: String,
-  },
+
   image: {
     type: String,
     required: [true, "please give image "],

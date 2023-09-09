@@ -36,16 +36,16 @@ const postEsewa = asyncHandler(async (req, res) => {
       throw new Error("Image upload failed");
     }
 
-    const { name, email, location, contact, detailedLocation } = req.body;
+    const { name, email, location, contact } = req.body;
     // Upload image to Cloudinary
     const image = await cloudinary.uploader.upload(req.file.path);
 
     const esewa = await Esewa.create({
+      name,
       image: image.secure_url, // Store the Cloudinary image URL in the database
       email,
       location,
       contact,
-      detailedLocation,
     });
 
     res.status(201).json(esewa);
