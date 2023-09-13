@@ -1,6 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 const asyncHandler = require("express-async-handler");
 const Esewa = require("../model/esewaInfoModel");
+const Cart = require("../model/cartModel");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -36,16 +37,17 @@ const postEsewa = asyncHandler(async (req, res) => {
       throw new Error("Image upload failed");
     }
 
-    const { name, email, location, contact } = req.body;
+    const { name, email, location, contact, cartItems } = req.body;
     // Upload image to Cloudinary
     const image = await cloudinary.uploader.upload(req.file.path);
 
     const esewa = await Esewa.create({
       name,
-      image: image.secure_url, // Store the Cloudinary image URL in the database
       email,
       location,
       contact,
+      image: image.secure_url,
+      cartItems,
     });
 
     res.status(201).json(esewa);
