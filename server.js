@@ -10,7 +10,7 @@ const port = process.env.PORT || 80;
 const dbConnect = require("./database/dbConnect");
 const router = require("./routes/productRoutes");
 const routerWorker = require("./routes/workerRoutes");
-const cartRouter = require("./routes/cartRoute");
+
 const User = require("./model/userModel");
 const mongoose = require("mongoose"); // Import mongoose
 const esewaRouter = require("./routes/esewaRoute");
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use("/api/products", router);
 app.use("/api/workers", routerWorker);
 app.use("/api/esewa", esewaRouter);
-app.use("/api/carts", cartRouter);
+
 app.get("/api/users", async (req, res) => {
   try {
     const db = mongoose.connection.db; // Get the MongoDB database instance
