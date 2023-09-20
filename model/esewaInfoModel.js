@@ -14,14 +14,13 @@ const esewaSchema = mongoose.Schema({
     required: [true, "Please enter your location"],
   },
   contact: {
-    type: String, // Change to String to match frontend input
+    type: String,
     required: [true, "Please enter your contact"],
   },
   image: {
     type: String,
     required: [true, "Please provide an image URL"],
   },
-  // Add fields for cart data
   cartItems: [
     {
       itemName: String,

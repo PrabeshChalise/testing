@@ -38,7 +38,9 @@ const postEsewa = asyncHandler(async (req, res) => {
     }
 
     const { name, email, location, contact, cartItems } = req.body;
-    // Upload image to Cloudinary
+
+    // You can add other Esewa form fields here
+
     const image = await cloudinary.uploader.upload(req.file.path);
 
     const esewa = await Esewa.create({
@@ -48,9 +50,11 @@ const postEsewa = asyncHandler(async (req, res) => {
       contact,
       image: image.secure_url,
       cartItems,
+      // Add other Esewa form fields here
     });
 
     res.status(201).json(esewa);
   });
 });
+
 module.exports = { getEsewa, getEsewaById, postEsewa };
