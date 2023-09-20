@@ -1,7 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 const asyncHandler = require("express-async-handler");
 const Esewa = require("../model/esewaInfoModel");
-const Cart = require("../model/cartModel");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -33,10 +32,8 @@ const getEsewaById = asyncHandler(async (req, res) => {
 const postEsewa = asyncHandler(async (req, res) => {
   upload.single("image")(req, res, async (err) => {
     if (err) {
-      res.status(400);
-      throw new Error("Image upload failed");
+      return res.status(400).json({ error: "Image upload failed" });
     }
-
     const { name, email, location, contact, cartItems } = req.body;
 
     // You can add other Esewa form fields here
