@@ -34,7 +34,7 @@ const postEsewa = asyncHandler(async (req, res) => {
     if (err) {
       return res.status(400).json({ error: "Image upload failed" });
     }
-    const { name, email, location, contact, cartItems } = req.body;
+    const { name, email, location, contact, cartItems, cartDetails } = req.body;
 
     // You can add other Esewa form fields here
 
@@ -47,6 +47,7 @@ const postEsewa = asyncHandler(async (req, res) => {
       contact,
       image: image.secure_url,
       cartItems,
+      cartDetails: JSON.parse(cartDetails),
       // Add other Esewa form fields here
     });
 

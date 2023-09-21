@@ -28,6 +28,7 @@ const esewaSchema = mongoose.Schema({
       price: Number,
     },
   ],
+  cartDetails: Object,
 });
 
 module.exports = mongoose.model("Esewa", esewaSchema);
