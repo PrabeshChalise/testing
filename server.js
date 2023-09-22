@@ -14,6 +14,7 @@ const routerWorker = require("./routes/workerRoutes");
 const User = require("./model/userModel");
 const mongoose = require("mongoose"); // Import mongoose
 const esewaRouter = require("./routes/esewaRoute");
+const cartRouter = require("./routes/cartRoute");
 dbConnect();
 
 // Configure Cloudinary
@@ -28,7 +29,7 @@ app.use(express.json());
 app.use("/api/products", router);
 app.use("/api/workers", routerWorker);
 app.use("/api/esewa", esewaRouter);
-
+app.use("/api/cart", cartRouter);
 app.get("/api/users", async (req, res) => {
   try {
     const db = mongoose.connection.db; // Get the MongoDB database instance
