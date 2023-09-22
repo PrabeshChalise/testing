@@ -7,12 +7,12 @@ const {
 } = require("../controller/cartController");
 
 // Create a new cart entry
-router.post("/", createCart);
+cartRouter.post("/", createCart);
 
 // Get all cart entries
-router.get("/", getAllCarts);
+cartRouter.get("/", getAllCarts);
 
 // Get a specific cart entry by ID
-router.get("/:id", getCartById);
+cartRouter.get("/:id", getCartById);
 
 module.exports = cartRouter;
