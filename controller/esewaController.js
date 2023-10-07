@@ -48,7 +48,7 @@ const postEsewa = asyncHandler(async (req, res) => {
       location,
       contact,
       image: image.secure_url,
-      cartItems,
+      cartItems: JSON.parse(cartItems), // Parse the cartItems as JSON
       // Add other Esewa form fields here
     });
 
